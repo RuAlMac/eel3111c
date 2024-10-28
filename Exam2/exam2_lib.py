@@ -1,10 +1,8 @@
 # This file contains functions that might be helpful for Exam 2 of EEL3111C for the Fall '24 semester
 #   Contents
 #       - rlc_response()
-#           > Natural Response for Parallel RLC Circuits
-#           > Step Response for Parallel RLC Circuits
-#           > Natural Response for Series RLC Circuits
-#           > Step Response for Series RLC Circuits
+#           > Inputs: a circuit's resistance, capacitance, and inducatance and if it is parallel/series and if looking for natural/step response
+#           > Outputs: whether overdamped, underdamped, critically damped, roots of char eq, neper frequency, resonant frequency, all associated equations
 
 import math
 import cmath
