@@ -32,24 +32,7 @@ def calculateRoots(a,w):
         s2 = -a - cmath.sqrt(a**2 - w**2)
 
     return s1,s2
-
-
-try:
-    # Code that might raise an exception
-    result = 10 / 0  # Example that will raise a ZeroDivisionError
-except ZeroDivisionError as e:
-    # Code to handle the exception
-    print(f"Caught an exception: {e}")
-except Exception as e:
-    # Handle any other exceptions
-    print(f"An error occurred: {e}")
-else:
-    # Optional: code that runs if no exceptions occur
-    print("No exceptions occurred, result is:", result)
-finally:
-    # Optional: code that always runs, regardless of exceptions
-    print("Execution completed.")
-
+    
 
 # Function  for natural/step response for parallel/series RLC circuits
 def rlc_response():
