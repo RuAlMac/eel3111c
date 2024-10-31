@@ -190,25 +190,29 @@ def rlc_response():
     else:
         type_str = "Step"
 
-    print("Outputs:")
-    print("\tCircuit is {}".format(state))
-    print("\tneper freq = {:.2e}".format(a))
-    print("\tresonant freq = {:.2e}".format(w))
-    print("\ts1 = {:.2e}".format(s1))
-    print("\ts2 = {:.2e}".format(s2))
-    print("\tChar Eq: {}".format(charEq))
-    print("\t{}".format(eq1))
-    print("\t{}".format(eq2))
-    print("\t{}".format(eq3))
+    print("\n\nOutputs:")
+    print("\t>Circuit is {}".format(state))
+    print("\t>Neper freq = {:.2e}".format(a))
+    print("\t>Resonant freq = {:.2e}".format(w))
+    print("\t>s1 = {:.2e}".format(s1))
+    print("\t>s2 = {:.2e}".format(s2))
+    print("\t>Char Eq: {}".format(charEq))
+    print("\t>{}".format(eq1))
+    print("\t>{}".format(eq2))
+    print("\t>{}".format(eq3))
 
     return
 
 
 # *****Code to execute when this script is run*****
-print("Select a function to use:")
-print("\t1) rlc_response")
+while(1):
+    print("Select a function to use:")
+    print("\t1) rlc_response")
+    print("\tz) Exit program")
 
-option = input("Function: ")
+    option = input("Function: ")
 
-if option == 1:
-    rlc_response()
+    if option == '1':
+        rlc_response()
+    elif option == 'z':
+        break
