@@ -10,6 +10,10 @@
 #           > fstrings (alternative example: myStr = "value1 = {}, value2 = {}".format(v1, v2) )
 #           > __name__ == __main__ (just put code to be automatically run at the very end of the .py file outside any functions)
 
+# <Settings>
+verboseOutput = False
+# </Settings>
+
 import math
 import cmath
 
@@ -153,7 +157,7 @@ def rlc_response():
     if ( (orientation == "s") and (typeResponse == "s") ): #series step response
 
         # Calculate neper freq (a) and resonant freq (w)
-        a = 1/(2*r*c)
+        a = r/(2*l)
         w = 1/math.sqrt(l*c)
 
         # Determine damped state
@@ -196,10 +200,14 @@ def rlc_response():
     print("\t>Resonant freq = {:.2e}".format(w))
     print("\t>s1 = {:.2e}".format(s1))
     print("\t>s2 = {:.2e}".format(s2))
-    print("\t>Char Eq: {}".format(charEq))
-    print("\t>{}".format(eq1))
-    print("\t>{}".format(eq2))
-    print("\t>{}".format(eq3))
+
+    # The equations for each config only print if global variable verboseOutput is true
+
+    if (verboseOutput == True):
+        print("\t>Char Eq: {}".format(charEq))
+        print("\t>{}".format(eq1))
+        print("\t>{}".format(eq2))
+        print("\t>{}".format(eq3))
 
     return
 
