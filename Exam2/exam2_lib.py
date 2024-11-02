@@ -144,7 +144,7 @@ def rlc_response():
             eq2 = "iL(0+) = A1 + A2 = I_0"
             eq3 = "diL(0+)/dt = {:.2e}*A1 + {:.2e}*A2 = -(1/L)*(R*I_0 + V_0)".format(s1,s2)
         elif state == "underdamped":
-            eq1 = "iL(t) = B1*e^({:.2e}*t)*cos({:.2e}*t) + B2*e^({:.2e}*t)*sin({:.2e}*t), t>=0".format(-a,w-a,w)
+            eq1 = "iL(t) = B1*e^({:.2e}*t)*cos({:.2e}*t) + B2*e^({:.2e}*t)*sin({:.2e}*t), t>=0".format(-a,w,-a,w)
             eq2 = "iL(0+) = B1 = I_0"
             eq3 = "diL(0+)/dt = {:.2e}*B1 + {:.2e}*B2 = -(1/L)*(R*I_0 + V_0)".format(-a,w)
         elif state == "critically damped":
