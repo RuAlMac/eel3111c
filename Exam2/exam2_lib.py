@@ -3,6 +3,8 @@
 #       - rlc_response()
 #           > Inputs: a circuit's resistance, capacitance, and inducatance and if it is parallel/series and if looking for natural/step response
 #           > Outputs: whether overdamped, underdamped, critically damped, roots of char eq, neper frequency, resonant frequency, all associated equations
+#       - Notes for filter-related problems
+#       - Miscellaneous notes
 #
 #   Important:
 #       The TI-NSpire runs an older version of python, and therefore does not support the following python elements
@@ -42,7 +44,7 @@ def calculateRoots(a,w):
     return s1,s2
     
 
-# Function  for natural/step response for parallel/series RLC circuits
+# Function for natural/step response for parallel/series RLC circuits
 def rlc_response():
     # Get parallel or series
     orientation = input("Parallel or Series RLC? (p/s): ")
@@ -211,16 +213,144 @@ def rlc_response():
 
     return
 
+# Function for use with loaded filter problems
+def loaded_filter():
+    print("What filter config do you have?")
+    print("\t1) low-pass RL")
+    print("\t2) high-pass RL")
+    print("\t3) low-pass RC")
+    print("\t4) high-pass RC")
+
+    option = input("Config:" )
+
+    print("\n")
+
+    if (option == '1'): #low-pass RL
+        print("Solve for load R_eq, then use")
+        print("\tcutoff freq w = R/L")
+    elif (option == '2'): #high-pass RL
+        print("Equation to use:")
+        print("\tR_L = (w*L * R) / (R - w*L)")
+        print()
+        print("\tR_L: load res resistance")
+        print("\tw: cutoff freq (rads/s)")
+    elif (option == '3'):
+        print("Equation to use:")
+        print("\tR_L = (R) / (w*C*R - 1)")
+        print()
+        print("\tR_L: load res resistance")
+        print("\tw: cutoff freq (rads/s)")
+    elif (option == '4'): #high-pass RC
+        print("Solve for load R_eq, then use")
+        print("\tcutoff freq w = 1/(R*C)")
+
+    return
+
+# Function for all things related to RC/RL/RLC passive filter design
+def filter_design():
+    print("\nChoose an action:")
+    print("\t1) Print cap/ind impedance formulas")
+    print("\t2) How to identify high/low pass?")
+    print("\t3) Print Vout and |Vout| formulas")
+    print("\t4) Loaded filter problem")
+    print("\t5) Determining the filter gain")
+    print("\t6) Creating a Bode plot")
+
+    option = input("Selection: ")
+
+    if (option == '1'): #printing capacitor and inductor impedance formulas
+        print("\nImpedance Formulas (z)")
+        print("\tZ_c = 1 / (w * c * j)")
+        print("\tZ_l = w * L * j")
+
+    elif (option == '2'): #printing tips for identifying a high or low-pass RC/RL filter
+        print("\nIdentifing high/low pass filters")
+        print("\tLow pass:")
+        print("\t\tInductor in series w/ src")
+        print("\t\t(Low freqs see a short)")
+        print("\t\tCap to gnd")
+        print("\tHigh pass:")
+        print("\t\tInductor to gnd")
+        print("\t\tCap in series w/ src")
+        print("\t\t(High freqs see a short)")
+
+    elif (option == '3'): #printing formulas for Vout and |Vout| for high or low-pass RC/RL filters
+        print("\nPrinting Vout & |Vout| formulas")
+        print("\tFor low-pass RL filter")
+        print("\t\tVout = (R * Vin) / (R + w*L)")
+        print("\t\t|Vout| = (R*|Vin|) / sqrt[(R)^2 + (w*L)^2)]")
+
+        print("\tFor high-pass RL filter")
+        print("\t\tVout = (Vin * w*L) / (R + w*L))")
+        print("\t\t|Vout| = (w*L*|Vin|) / (sqrt[R^2 + (w*L)^2])")
+
+        print("\tFor low-pass RC filter")
+        print("\t\tVout = (1 * Vin) / (1 + w*R*C)")
+        print("\t\t|Vout| = (1*|Vin|) / sqrt[1+(w*R*C)^2]")
+
+        print("\tFor high-pass RC filter")
+        print("\t\tVout = (Vin * w*R*C) / (1 + w*R*C)")
+        print("\t\t|Vout| = (w*R*C*|Vin|) / sqrt[1+(w*R*C)^2]")
+
+    elif (option == '4'): #loaded filter problems
+        loaded_filter()
+
+    elif (option == '5'): #determining filter gain
+        print("Determining filter gain")
+        
+        print("\tLow-pass RL:")
+        print("\t\t|H(w)| = w*L / sqrt[R^2 + (w*L)^2]")
+        
+        print("\tHigh-pass RL:")
+        print("\t\t|H(w)| = R / sqrt[R^2 + (w*L)^2]")
+        
+        print("\tLow-pass RC:")
+        print("\t\t|H(w)| = 1 / sqrt[1 + (w*R*C)^2]")
+        
+        print("\tHigh-pass RC:")
+        print("\t\t|H(w)| = (w*R*C) / sqrt[1 + (w*R*C)^2]")
+
+    elif (option == '6'): #creating a Bode plot
+        print("Creating a Bode plot")
+        print("\tEq: 20*log(10)(H(jw))")
+        print()
+        print("\tCutoff freq @ -3dB")
+        print("\tGain of 1 @ 0dB")
+
+    return
+    
+# Function for miscellaneous tips
+def misc_tips():
+    print("Topic in question?")
+    print("\t1) Unit step input")
+
+    option = input("Topic: ")
+    print()
+
+    if (option == 1):
+        print("Unit step input")
+        print("\tEq: 1-e^(-t/rho)")
+        print()
+        print("For t=rho,")
+        print("1-e^(-1) = 63.2%")
+
+    return
 
 # *****Code to execute when this script is run*****
 while(1):
     print("Select a function to use:")
     print("\t1) rlc_response")
+    print("\t2) Filter design questions")
+    print("\t3) Misc tips")
     print("\tz) Exit program")
 
     option = input("Function: ")
 
     if option == '1':
         rlc_response()
+    elif option == '2':
+        filter_design()
+    elif option == '3':
+        misc_tips()
     elif option == 'z':
         break
