@@ -200,8 +200,13 @@ def rlc_response():
     print("\t>Circuit is {}".format(state))
     print("\t>Neper freq = {:.2e}".format(a))
     print("\t>Resonant freq = {:.2e}".format(w))
-    print("\t>s1 = {:.2e}".format(s1))
-    print("\t>s2 = {:.2e}".format(s2))
+
+    if (state == "underdamped"):
+        w_d = math.sqrt(w**2 - a**2)
+        print("\tDamped freq = {:.2e}".format(w_d))
+
+    print("\t>s1 = {}".format(s1))
+    print("\t>s2 = {}".format(s2))
 
     # The equations for each config only print if global variable verboseOutput is true
 
@@ -338,6 +343,7 @@ def misc_tips():
 
 # *****Code to execute when this script is run*****
 while(1):
+    print("\n\n")
     print("Select a function to use:")
     print("\t1) rlc_response")
     print("\t2) Filter design questions")
