@@ -360,4 +360,6 @@ while(1):
     elif option == '3':
         misc_tips()
     elif option == 'z':
+        print("\nExiting program...")
+        print("Press 'CTRL+R' to rerun")
         break
