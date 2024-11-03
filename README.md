@@ -2,7 +2,7 @@
 This repo contains the libraries I've created for the TI-NSpire for EEL3111C exams.
 
 **For Exam 2** _updated 11/03 @ 14:23_<br>
-**To run, open file, go to page 3, and press "CTRL+R"**
+**To run, open file, go to page 3, and press "CTRL+R"**<br><br>
 Contents
 - rlc_response()
   > Inputs: a circuit's resistance, capacitance, and inducatance and if it is parallel/series and if looking for natural/step response<br>
