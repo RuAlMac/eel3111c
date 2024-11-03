@@ -237,13 +237,13 @@ def loaded_filter():
     elif (option == '2'): #high-pass RL
         print("Equation to use:")
         print("\tR_L = (w*L * R) / (R - w*L)")
-        print()
+        print("\n")
         print("\tR_L: load res resistance")
         print("\tw: cutoff freq (rads/s)")
     elif (option == '3'):
         print("Equation to use:")
         print("\tR_L = (R) / (w*C*R - 1)")
-        print()
+        print("\n")
         print("\tR_L: load res resistance")
         print("\tw: cutoff freq (rads/s)")
     elif (option == '4'): #high-pass RC
@@ -319,7 +319,7 @@ def filter_design():
     elif (option == '6'): #creating a Bode plot
         print("Creating a Bode plot")
         print("\tEq: 20*log(10)(H(jw))")
-        print()
+        print("\n")
         print("\tCutoff freq @ -3dB")
         print("\tGain of 1 @ 0dB")
 
@@ -333,10 +333,10 @@ def misc_tips():
     option = input("Topic: ")
     print()
 
-    if (option == 1):
+    if (option == '1'):
         print("Unit step input")
         print("\tEq: 1-e^(-t/rho)")
-        print()
+        print("\n")
         print("For t=rho,")
         print("1-e^(-1) = 63.2%")
 
